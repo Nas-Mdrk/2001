@@ -1,0 +1,9 @@
+javac Framework/*.java -d "C:\Users\itu\Documents\espace_de_travail\Framework\WEB-INF\classes"
+cd C:\Users\itu\Documents\espace_de_travail\Framework\WEB-INF\classes
+jar -cf "C:/Users/itu/Documents/espace_de_travail/testFramework/WEB-INF/lib/framework.jar" etu2001
+cd C:\Users\itu\Documents\espace_de_travail
+jar cvf framework.war -C "C:\Users\itu\Documents\espace_de_travail\testFramework" . 
+xcopy  "C:\Users\itu\Documents\espace_de_travail\Framework\WEB-INF\classes"  "C:\Users\itu\Documents\espace_de_travail\testFramework\WEB-INF\classes" /E /H 
+t
+copy framework.war "C:\Program Files\Apache Software Foundation\Tomcat 10.0\webapps"
+t
