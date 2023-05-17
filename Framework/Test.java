@@ -22,6 +22,9 @@ public class Test {
 	@Annotation(url = "/adresse-maison")
     public ModelView getAdresse(){
         ModelView ok = new ModelView();
+		String m = "Milay";
+		String b = "Bonjour";
+		ok.addData(m,b);
         ok.setView("maison.jsp");
         return ok;
     }

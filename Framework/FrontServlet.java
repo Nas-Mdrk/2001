@@ -93,10 +93,15 @@ public class FrontServlet extends HttpServlet {
                 out.println("<p>" + map.getMethod() + "</p>");
                 try{
                     Class<?> cla = Class.forName(map.getclassName());
-                     Method m = cla.getMethod(map.getMethod());
-                    ModelView model = (ModelView)(m.invoke(cla.newInstance()));
-                     RequestDispatcher dispatch = request.getRequestDispatcher(model.getView());
-                     dispatch.forward(request,response);
+                    Method m = cla.getMethod(map.getMethod());
+					ModelView model = (ModelView)(m.invoke(cla.newInstance()));
+					for(Map.Entry<String, Object> e : model.getData().entrySet()){
+						String key = e.getKey();
+						Object o = e.getValue();
+						request.setAttribute(key,o);
+					}
+                    RequestDispatcher dispatch = request.getRequestDispatcher(model.getView());
+                    dispatch.forward(request,response);
                  }
                  catch(Exception e){
                     out.println("<p>" + e + "</p>");
